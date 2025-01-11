@@ -1,31 +1,35 @@
 <div class="container">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#modalTambah">
-        <i class="bi bi-plus-lg"></i> Tambah gallery
+        <i class="bi bi-plus-lg"></i> Tambah Gambar
     </button>
     <div class="row">
-        <div class="table-responsive " id="gallery_data">
+        <div class="table-responsive" id="gallery_data">
 
         </div>
+
         <!-- Awal Modal Tambah-->
         <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Gallery</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Gambar</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" name="gambar">
+                                <label for="formGroupExampleInput2" class="form-label">Pilih Gambar</label>
+                                <input type="file" class="form-control" name="gambar" required>
+                                <small class="text-muted">Format yang diizinkan: JPG, PNG, JPEG. <small
+                                        class="text-danger">Max 500KB</small>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" value="simpan" name="simpan" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <input type="submit" value="Simpan" name="simpan" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
@@ -35,9 +39,12 @@
     </div>
 </div>
 
+
+
 <script>
     $(document).ready(function () {
         load_data();
+
         function load_data(hlm) {
             $.ajax({
                 url: "gallery_data.php",
@@ -50,8 +57,9 @@
                 }
             })
         }
+
         $(document).on('click', '.halaman', function () {
-            var hlm = $(this).attr("id");
+            var hlm = $(this).attr("id_gallery");
             load_data(hlm);
         });
     });
@@ -63,6 +71,7 @@ include "upload_foto.php";
 //jika tombol simpan diklik
 if (isset($_POST['simpan'])) {
     $tanggal = date("Y-m-d H:i:s");
+    $username = $_SESSION['username'];
     $gambar = '';
     $nama_gambar = $_FILES['gambar']['name'];
 
@@ -100,20 +109,20 @@ if (isset($_POST['simpan'])) {
         }
 
         $stmt = $conn->prepare("UPDATE gallery 
-                                SET 
+                                SET
                                 gambar = ?,
-                                tanggal = ?
+                                tanggal = ?,
+                                username = ?
                                 WHERE id_gallery = ?");
 
-        $stmt->bind_param("sssssi", $gambar, $tanggal, $id_gallery);
+        $stmt->bind_param("sssi", $gambar, $tanggal, $username, $id);
         $simpan = $stmt->execute();
     } else {
         //jika tidak ada id, lakukan insert data baru
-        $stmt = $conn->prepare("INSERT INTO gallery (gambar, tanggal) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO gallery (gambar,tanggal,username)
+                                VALUES (?,?,?)");
 
-
-        $stmt->bind_param("ss", $gambar, $tanggal);
-        var_dump($gambar, $tanggal); // Debugging
+        $stmt->bind_param("sss", $gambar, $tanggal, $username);
         $simpan = $stmt->execute();
     }
 
@@ -140,7 +149,7 @@ if (isset($_POST['hapus'])) {
 
     if ($gambar != '') {
         //hapus file gambar
-        unlink(filename: "img/" . $gambar);
+        unlink("img/" . $gambar);
     }
 
     $stmt = $conn->prepare("DELETE FROM gallery WHERE id_gallery =?");

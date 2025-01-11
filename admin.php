@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>One Piece | Atemin</title>
-    <link rel="icon" href="img/logo.png" />
+    <link rel="icon" href="img/logoo.jpg" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -44,7 +44,7 @@ if (!isset($_SESSION['username'])) {
 
 <body>
     <!-- nav begin -->
-    <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top bg-danger-subtle">
+    <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top bg-info-subtle">
         <div class="container">
             <a class="navbar-brand" href="">One Piece</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -64,11 +64,13 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button"
+                        <a class="nav-link dropdown-toggle text-primary fw-bold" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <?= $_SESSION['username'] ?>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="admin.php?page=profile">Profil
+                                    <?= $_SESSION['username'] ?></a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </li>
@@ -84,13 +86,13 @@ if (!isset($_SESSION['username'])) {
             <?php
             if (isset($_GET['page'])) {
                 ?>
-                <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle"><?= ucfirst(string: $_GET['page']) ?>
+                <h4 class="lead display-6 pb-2 border-bottom border-info-subtle"><?= ucfirst(string: $_GET['page']) ?>
                 </h4>
                 <?php
                 include($_GET['page'] . ".php");
             } else {
                 ?>
-                <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle">Dashboard</h4>
+                <h4 class="lead display-6 pb-2 border-bottom border-info-subtle">Dashboard</h4>
                 <?php
                 include("dashboard.php");
             }
@@ -100,7 +102,7 @@ if (!isset($_SESSION['username'])) {
     <!-- content end -->
 
     <!-- footer begin -->
-    <footer class="text-center p-3 bg-danger-subtle">
+    <footer class="text-center p-3 bg-info-subtle">
         <div>
             <a href="https://www.instagram.com/udinusofficial"><i class="bi bi-instagram h2 p-2 text-dark"></i></a>
             <a href="https://twitter.com/udinusofficial"><i class="bi bi-twitter h2 p-2 text-dark"></i></a>

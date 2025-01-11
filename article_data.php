@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover table-responsive">
     <thead class="table-dark">
         <tr>
             <th>No</th>
@@ -13,7 +13,7 @@
         include "koneksi.php";
 
         $hlm = (isset($_POST['hlm'])) ? $_POST['hlm'] : 1;
-        $limit = 3;
+        $limit = 4;
         $limit_start = ($hlm - 1) * $limit;
         $no = $limit_start + 1;
 
@@ -33,15 +33,15 @@
                 <td>
                     <?php
                     if ($row["gambar"] != '') {
-                        if (file_exists(filename: 'img/' . $row["gambar"] . '')) {
+                        if (file_exists('img/' . $row["gambar"])) {
                             ?>
-                            <img src="img/<?= $row["gambar"] ?>" width="100">
+                            <img src="img/<?= $row["gambar"] ?>" class="img-fluid" width="100">
                             <?php
                         }
                     }
                     ?>
                 </td>
-                <td>
+                <td class="">
                     <a href="#" title="edit" class="badge rounded-pill text-bg-success" data-bs-toggle="modal"
                         data-bs-target="#modalEdit<?= $row["id"] ?>"><i class="bi bi-pencil"></i></a>
                     <a href="#" title="delete" class="badge rounded-pill text-bg-danger" data-bs-toggle="modal"
@@ -52,7 +52,7 @@
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-info text-white">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Article</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
@@ -106,7 +106,7 @@
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-info text-white">
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Konfirmasi Hapus
                                         Article</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -125,7 +125,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">batal</button>
-                                        <input type="submit" value="hapus" name="hapus" class="btn btn-primary">
+                                        <input type="submit" value="hapus" name="hapus" class="btn btn-">
                                     </div>
                                 </form>
                             </div>
@@ -133,7 +133,6 @@
                     </div>
                     <!-- Akhir Modal Hapus -->
                 </td>
-                <td>
                 </td>
             </tr>
             <?php

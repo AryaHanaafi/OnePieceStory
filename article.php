@@ -8,39 +8,44 @@
 
         </div>
         <!-- Awal Modal Tambah-->
+        <!-- Modal Tambah Article -->
         <div class="modal fade" id="modalTambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Article</h1>
+                    <div class="modal-header bg-info text-white">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Artikel</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="post" action="" enctype="multipart/form-data">
                         <div class="modal-body">
+                            <!-- Judul Artikel -->
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Judul</label>
-                                <input type="text" class="form-control" name="judul"
+                                <label for="judul" class="form-label">Judul Artikel</label>
+                                <input type="text" class="form-control" name="judul" id="judul"
                                     placeholder="Tuliskan Judul Artikel" required>
                             </div>
+                            <!-- Isi Artikel -->
                             <div class="mb-3">
-                                <label for="floatingTextarea2">Isi</label>
-                                <textarea class="form-control" placeholder="Tuliskan Isi Artikel" name="isi"
-                                    required></textarea>
+                                <label for="isi" class="form-label">Isi Artikel</label>
+                                <textarea class="form-control" id="isi" name="isi" placeholder="Tuliskan Isi Artikel"
+                                    rows="4" required></textarea>
                             </div>
+                            <!-- Gambar Artikel -->
                             <div class="mb-3">
-                                <label for="formGroupExampleInput2" class="form-label">Gambar</label>
-                                <input type="file" class="form-control" name="gambar">
+                                <label for="gambar" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" name="gambar" id="gambar" accept="image/*">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input type="submit" value="simpan" name="simpan" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <input type="submit" value="Simpan" name="simpan" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
         <!-- Akhir Modal Tambah-->
     </div>
 </div>

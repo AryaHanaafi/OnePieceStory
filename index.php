@@ -8,7 +8,7 @@ include "koneksi.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>One Piece</title>
-    <link rel="icon" href="https://i.pinimg.com/564x/ab/a6/bb/aba6bb42cb08e35ac0d71e6044566b0a.jpg">
+    <link rel="icon" href="img/logoo.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -266,8 +266,7 @@ include "koneksi.php";
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 text-center text-md-start">
                     <div class="d-md-flex align-items-center gap-4">
-                        <img src="https://i.pinimg.com/564x/ab/a6/bb/aba6bb42cb08e35ac0d71e6044566b0a.jpg"
-                            class="rounded-circle mb-4 m-4" width="360" alt="">
+                        <img src="img/profil.jpg" class="rounded-circle mb-4 m-2" width="360" alt="">
                         <div>
                             <p class="text-muted mb-0">
                                 A11.2023.15132
