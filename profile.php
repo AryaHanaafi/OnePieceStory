@@ -21,12 +21,12 @@ $user = $result->fetch_assoc();
 
 // Jika tombol simpan ditekan
 if (isset($_POST['simpan'])) {
-    $new_username = $_POST['username'];
+    $new_username = !empty($_POST['username']) ? $_POST['username'] : $username;
     $password = !empty($_POST['password']) ? md5($_POST['password']) : $user['password'];
     $foto = $user['foto'];
 
-    // Validasi jika username sudah digunakan, hanya jika username baru tidak kosong
-    if (!empty($new_username) && $new_username !== $username) {
+    // Validasi jika username baru berbeda dengan yang lama
+    if ($new_username !== $username) {
         $check_username = $conn->prepare("SELECT * FROM user WHERE username = ?");
         $check_username->bind_param("s", $new_username);
         $check_username->execute();
@@ -67,7 +67,6 @@ if (isset($_POST['simpan'])) {
         echo "<script>alert('Gagal memperbarui data!');</script>";
     }
 }
-
 
 $stmt->close();
 $conn->close();
@@ -110,7 +109,6 @@ $conn->close();
     const togglePassword = document.getElementById('togglePassword');
     const passwordField = document.getElementById('password');
     const eyeIcon = document.getElementById('eyeIcon');
-
 
     togglePassword.addEventListener('click', function () {
         const type = passwordField.type === 'password' ? 'text' : 'password';
