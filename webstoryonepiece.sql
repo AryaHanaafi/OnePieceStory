@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jan 2025 pada 14.59
+-- Waktu pembuatan: 11 Jan 2025 pada 22.23
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -45,7 +45,7 @@ INSERT INTO `article` (`id`, `judul`, `isi`, `gambar`, `tanggal`, `username`) VA
 (2, 'Roronoa Zoro', 'Name: Roronoa Zoro\r\nRole: Combatant of the Straw Hat Pirates, Swordsman\r\nDream: To become the World\'s Greatest Swordsman\r\nSignature Swords: Wado Ichimonji, Enma, Sandai Kitetsu', 'zoro.jpg', '2024-12-05 13:44:58', 'atemincuy'),
 (3, 'Nami', 'Nami adalah navigator cerdas yang bertugas memandu kapal Bajak Laut Topi Jerami melewati perairan berbahaya. Ia memiliki kemampuan luar biasa dalam membaca cuaca dan membuat peta, bercita-cita untuk menggambar peta seluruh dunia. Nami dulunya adalah pencuri yang bekerja untuk Bajak Laut Arlong, namun bergabung dengan Luffy setelah dibebaskan dari perbudakan.', 'nami.jpg', '2024-12-11 20:58:12', 'atemincuy'),
 (4, 'Vinsmoke Sanji', 'Vinsmoke Sanji adalah koki kapal Bajak Laut Topi Jerami yang juga seorang ahli bela diri dengan gaya bertarung khas \"Black Leg\". Ia terlahir sebagai bagian dari keluarga bangsawan Germa 66, namun meninggalkan mereka karena perbedaan prinsip. Sanji sangat sopan terhadap wanita dan memiliki prinsip kuat untuk tidak pernah menyakiti mereka, bahkan dalam situasi genting.', 'sanjii.jpg', '2024-12-11 21:01:09', 'atemincuy'),
-(5, 'Nico Robin', 'Nico Robin adalah arkeolog kapal dan satu-satunya orang yang mampu membaca Poneglyph, prasasti kuno yang menyimpan rahasia sejarah dunia. Robin memakan Hana Hana no Mi, yang memungkinkannya membuat bagian tubuhnya tumbuh di berbagai permukaan. Masa lalunya penuh penderitaan karena ia diburu oleh Pemerintah Dunia sejak kecil akibat kemampuannya.', 'robin.jpg', '2024-12-23 15:04:00', 'atemincuy');
+(5, 'Nico Robin', 'Nico Robin adalah arkeolog kapal dan satu-satunya orang yang mampu membaca Poneglyph, prasasti kuno yang menyimpan rahasia sejarah dunia. Robin memakan Hana Hana no Mi, yang memungkinkannya membuat bagian tubuhnya tumbuh di berbagai permukaan. Masa lalunya penuh penderitaan karena ia diburu oleh Pemerintah Dunia sejak kecil akibat kemampuannya.', 'robin.jpg', '2025-01-11 11:58:55', 'atemincuy');
 
 -- --------------------------------------------------------
 
@@ -55,20 +55,21 @@ INSERT INTO `article` (`id`, `judul`, `isi`, `gambar`, `tanggal`, `username`) VA
 
 CREATE TABLE `gallery` (
   `id_gallery` int(11) NOT NULL,
-  `gambar` text NOT NULL,
-  `tanggal` date NOT NULL
+  `gambar` text DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data untuk tabel `gallery`
 --
 
-INSERT INTO `gallery` (`id_gallery`, `gambar`, `tanggal`) VALUES
-(1, '20241223183026.jpg', '2024-12-23'),
-(2, '20241225132614.jpg', '2024-12-25'),
-(3, '20241225132638.jpg', '2024-12-25'),
-(4, '20241225175229.jpg', '2024-12-25'),
-(5, '20241225175236.jpg', '2024-12-25');
+INSERT INTO `gallery` (`id_gallery`, `gambar`, `tanggal`, `username`) VALUES
+(52, '20250112031459.jpg', '2025-01-12 03:14:59', 'aryahanaafi'),
+(53, '20250112021125.jpg', '2025-01-12 02:11:25', 'admin'),
+(54, '20250112021136.jpg', '2025-01-12 02:11:36', 'admin'),
+(55, '20250112021149.jpg', '2025-01-12 02:11:49', 'admin'),
+(56, '20250112021158.jpg', '2025-01-12 02:11:58', 'admin');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `foto`) VALUES
-(1, 'atemincuy', 'e61d1f660f389b5562c9c084625d917f', '');
+(1, '', '9cd618641f27b1af8a21cb68d7cc497f', '20250112032138.jpg'),
+(2, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '20250112032514.jpg');
 
 --
 -- Indexes for dumped tables
@@ -126,13 +128,13 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT untuk tabel `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
